@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #messages {
+            list-style-type: none;
+            padding: 0;
+        }
+        .message {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Forum</h1>
+
+    <ul id="messages"></ul>
+
+    <form id="messageForm">
+        <label for="username">Your name:</label>
+        <input type="text" id="username" required>
+        <br>
+        <br>
+
+        <label for="message">Your message:</label>
+        <textarea id="message" required></textarea>
+        <br>
+        <br>
+
+        <button type="button" onclick="addMessage()">Send</button>
+    </form>
+
+    <script>
+        function addMessage() {
+            var username = document.getElementById("username").value;
+            var messageText = document.getElementById("message").value;
+
+            if (username && messageText) {
+                var messagesList = document.getElementById("messages");
+
+                var li = document.createElement("li");
+                li.className = "message";
+                li.innerHTML = "<strong>" + username + ":</strong> " + messageText;
+
+                messagesList.appendChild(li);
+
+                // Очистка полів форми
+                document.getElementById("username").value = "";
+                document.getElementById("message").value = "";
+            } else {
+                alert("Please fill in all fields of the form.");
+            }
+        }
+    </script>
+</body>
+</html>
